@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Cliente } from '../cliente.model';
+import { ClienteService } from '../cliente.service';
 
 @Component({
   selector: 'app-cliente-lista',
@@ -24,7 +25,7 @@ export class ClienteListaComponent implements OnInit {
 
   ];*/
 
-  constructor() { }
+  constructor(public clienteService: ClienteService) { }
 
   ngOnInit(): void {
   }
