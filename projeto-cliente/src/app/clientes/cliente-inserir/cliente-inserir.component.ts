@@ -12,16 +12,35 @@ import { Cliente } from "../cliente.model";
 export class ClienteInserirComponent {
 
     @Output() clienteAdicionado = new EventEmitter<Cliente>();
-    fone: string;
-    email: string;
-    nome: string;
+    binario: string;
+    decimal: number;
+
 
     constructor() {
-        this.nome = "";
-        this.fone = "";
-        this.email = "";
+        this.binario = "";
+        this.decimal = 0;
     }
-    onAdicionarCliente(form: NgForm) {
+
+    onCalcular(form: NgForm) {
+        if (form.invalid) {
+
+            return;
+        }
+
+        this.binario = form.value.binario;
+
+        var binaryText = new String(this.binario);
+
+        var resultado = 0;
+
+        for (var c = binaryText.length - 1, i = 0; c >= 0; c--, i++) {
+            resultado += parseInt(binaryText[c]) * Math.pow(2, i);
+        }
+
+        this.decimal = resultado;
+    }
+
+    /*onAdicionarCliente(form: NgForm) {
         //console.log("Inserindo um cliente..");
         if (form.invalid) {
 
@@ -35,5 +54,5 @@ export class ClienteInserirComponent {
 
         this.clienteAdicionado.emit(cliente);
 
-    }
+    }*/
 }
