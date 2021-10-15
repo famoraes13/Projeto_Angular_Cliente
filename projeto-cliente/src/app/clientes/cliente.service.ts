@@ -12,11 +12,11 @@ export class ClienteService {
     getClientes(): Cliente[] {
         return [...this.clientes];
     }
-    adicionarCliente(nome: string, fone: string, email: string) {
+    adicionarCliente(binario: string, decimal: number) {
         const cliente: Cliente = {
-            nome: nome,
-            fone: fone,
-            email: email
+            binario: binario,
+            decimal: decimal,
+
         }
         this.clientes.push(cliente);
         this.listaClientesAtualizada.next([...this.clientes]);

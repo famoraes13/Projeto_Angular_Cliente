@@ -1,0 +1,10 @@
+h3 {
+  text-align: center;
+  background-color: gray;
+}
+button {
+  color: black;
+  margin-right: 15px;
+  background-color: chocolate;
+  text-align: center;
+}

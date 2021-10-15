@@ -1,6 +1,5 @@
 export interface Cliente {
-    nome: String;
-    fone: String;
-    email: String;
+    binario: string;
+    decimal: number;
 
 }

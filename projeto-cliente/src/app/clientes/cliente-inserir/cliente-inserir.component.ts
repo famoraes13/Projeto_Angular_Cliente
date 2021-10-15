@@ -12,6 +12,7 @@ import { ClienteService } from "../cliente.service";
 
 export class ClienteInserirComponent {
 
+
     constructor(public clienteService: ClienteService) { // quando adicionado não precisa mais dos eventos
 
 
@@ -30,6 +31,8 @@ export class ClienteInserirComponent {
 
 
     onAdicionarCliente(form: NgForm) {
+
+
         //console.log("Inserindo um cliente..");
         if (form.invalid) {
 
@@ -37,8 +40,8 @@ export class ClienteInserirComponent {
         }
         this.clienteService.adicionarCliente(
             form.value.nome,
-            form.value.fone,
-            form.value.email
+            form.value.fone
+            //form.value.email
         );
         form.resetForm();
 
