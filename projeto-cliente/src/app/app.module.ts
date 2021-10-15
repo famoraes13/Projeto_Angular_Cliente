@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
-
 import { ClienteInserirComponent } from './clientes/cliente-inserir/cliente-inserir.component';//
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +14,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';//
 import { ClienteListaComponent } from './clientes/cliente-lista/cliente-lista.component';
+
 import { ClienteService } from './clientes/cliente.service';
 
 

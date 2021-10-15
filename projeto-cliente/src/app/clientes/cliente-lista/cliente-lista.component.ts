@@ -1,33 +1,29 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Cliente } from '../cliente.model';
 import { ClienteService } from '../cliente.service';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cliente-lista',
   templateUrl: './cliente-lista.component.html',
   styleUrls: ['./cliente-lista.component.css']
 })
-export class ClienteListaComponent implements OnInit {
-  @Input() clientes: Cliente[] = [];
 
-  /*clientes = [
-    {
-      nome: "Felipe",
-      fone: "11995555555",
-      email: "felipe.moraes@gmail.com"
-
-    },
-    {
-      nome: "Henrique",
-      fone: "19955558888",
-      email: "henrique.moraes2gmail.com"
-    },
-
-  ];*/
-
+export class ClienteListaComponent implements OnInit, OnDestroy {
+  clientes: Cliente[] = [];
+  private clientesSubscription: Subscription = new Subscription;
   constructor(public clienteService: ClienteService) { }
 
   ngOnInit(): void {
+    this.clientes = this.clienteService.getClientes();
+
+    this.clientesSubscription = this.clienteService.getListaDeClientesAtualizadaObservable().subscribe((clientes: Cliente[]) => {
+      this.clientes = clientes;
+    });
+  }
+  ngOnDestroy(): void {
+
+    this.clientesSubscription.unsubscribe();
   }
 
 }
